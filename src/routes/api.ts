@@ -4,6 +4,11 @@ import authMiddleware from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.status(200).json({
+        message: "Hello world"
+    })
+})
 
 router.post('/auth/register', authController.register)
 router.post('/auth/login', authController.login)
