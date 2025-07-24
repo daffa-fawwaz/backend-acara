@@ -2,6 +2,8 @@ import express from "express";
 import router from "./routes/api";
 import bodyParser from "body-parser";
 import db from "./utils/database";
+import docs from "./docs/route";
+import cors from "cors";
 
 
 async function init() {
@@ -13,11 +15,13 @@ async function init() {
 
         const app = express();
 
+        app.use(cors())
         app.use(bodyParser.json())
 
         const PORT = 3000;
 
         app.use("/api", router);
+        docs(app)
 
 
         app.listen(PORT, () => {
